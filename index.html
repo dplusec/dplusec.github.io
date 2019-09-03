@@ -47,6 +47,23 @@
     }
 </style>
 
+<script>
+$("document").ready(function(){
+    $.ajax({
+            url: "https://api.github.com/repos/dplusec/tgwechat/releases?ran=0.0552366221351448",
+            type: "GET",
+            success: function(data) {
+                var download_count = data[0]["assets"][0]["download_count"];
+                console.log(download_count);
+                $("#github_download").html(download_count);
+            },
+            error: function(msg) {
+                console.log(msg);
+            },
+        })
+});
+</script>
+
 <body>
     <div class="container">
         <div class="row" style="background:rgb(48, 48, 107);">
@@ -86,7 +103,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p style="padding:10px;">下载次数：5000+</p>
+                                <p style="padding:10px;">下载次数：5000+ | github下载次数：<span id="github_download" style="color:red;font-weight: bold;"></span></p>
                             </div>
                         
                         </div>
